@@ -1,10 +1,8 @@
 import subprocess
 import optparse
 
-# write commands on terminal
 # python MyMacChanger.py -i eth0 -m 33:22:44:21:3a:4c
 # python MyMacChanger.py --interface  eth0 --mac 44:22:54:21:2a:11
-
 
 parse_object = optparse.OptionParser()
 parse_object.add_option("-i", "--interface", dest="interface", help="interface to change")
@@ -26,4 +24,3 @@ subprocess.call(["ifconfig",user_inputs.interface,"up"])
 print("My Mac changer finished!")
 print("------------------------------------")
 subprocess.call(["ifconfig"])
-

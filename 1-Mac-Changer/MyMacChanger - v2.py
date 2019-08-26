@@ -2,11 +2,8 @@ import subprocess
 import optparse
 import re
 
-# write commands on terminal
 # python MyMacChanger.py -i eth0 -m 33:22:44:21:3a:4c
 # python MyMacChanger.py --interface  eth0 --mac 44:22:54:21:2a:11
-
-
 
 def control_new_mac(interface):
     ifconfig = subprocess.check_output(["ifconfig",interface])
@@ -42,9 +39,3 @@ change_mac_adress(user_inputs.interface, user_inputs.mac_adress)
 # print(user_inputs.mac_adress)          # show values of -m
 
 print("My Mac changer finished!")
-
-
-
-
-
-
