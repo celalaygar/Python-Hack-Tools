@@ -3,6 +3,9 @@ import time
 import optparse
 
 # echo 1> /proc/sys/net/ipv4/ip_forward      -> you need to do everytime when your comp. start on cmd
+# Saldırgan, makinesinin ethernet kartını ağdan gelen tüm paketleri yönlendir moduna sokar.
+# echo 1 > /proc/sys/net/ipv4/ip_forward  
+# -------------------------------------------------------
 # python3 My_Mitm.py -t 10.0.2.15 -g 10.0.2.1
 
 # -------------------------------------------------------
