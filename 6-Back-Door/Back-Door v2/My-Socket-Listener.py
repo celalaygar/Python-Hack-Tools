@@ -1,7 +1,8 @@
 import socket
 
+
 # bu dosya kali linuxda çalışacak ve ilk bu dosya çalışacaktır. 
-# daha sonra My-Socket-For-windows dosyası çalışacaktır.
+# daha sonra My-Socket-For-windows dosyası windows üzerinde çalışacaktır.
 # ve artık cmd komutları ıle windows uzerındekı bilgileri edinebiliriz. dir ipconfig gibi komutları kullanarak
 
 
