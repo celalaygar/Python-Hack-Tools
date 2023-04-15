@@ -1,5 +1,8 @@
 
 # $ pip install dnspython
+# I searched this web page -->   https://www.thepythoncode.com/topic/ethical-hacking
+
+
 import dns.resolver
 
 # Set the target domain and record type
