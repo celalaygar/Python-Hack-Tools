@@ -1,12 +1,11 @@
 
 # $ pip install dnspython
-# I searched this web page -->   https://www.thepythoncode.com/topic/ethical-hacking
-
+# I searched this web page -->   https://www.thepythoncode.com/article/dns-enumeration-with-python
 
 import dns.resolver
 
 # Set the target domain and record type
-target_domain = "thepythoncode.com"
+target_domain = "www.......com"
 record_types = ["A", "AAAA", "CNAME", "MX", "NS", "SOA", "TXT"]
 # Create a DNS resolver
 resolver = dns.resolver.Resolver()
