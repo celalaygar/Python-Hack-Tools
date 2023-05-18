@@ -2,7 +2,6 @@ import whois # pip install python-whois
 
 # reference link : https://www.thepythoncode.com/article/extracting-domain-name-information-in-python
 
-
 def is_registered(domain_name):
     """
     A function that returns a boolean indicating 
