@@ -1,7 +1,6 @@
 # Python dilinde bir FTP sunucusuna brute force saldırısı yapmak için basit bir örnek 
 # kod bulunmaktadır. Ancak, lütfen unutmayın ki, bu tür saldırılar yasa dışıdır ve 
-# başka kişilerin veya sistemlerin 
-# izni olmadan gerçekleştirilmemelidir. 
+# başka kişilerin veya sistemlerin izni olmadan gerçekleştirilmemelidir. 
 # Bu kodu yasal ve etik olarak kabul edilebilir bir şekilde kullanmalısınız.
 
 
