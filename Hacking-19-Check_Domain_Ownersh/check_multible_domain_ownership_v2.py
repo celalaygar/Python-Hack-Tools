@@ -1,3 +1,8 @@
+# install library
+#
+# pip install python-whois
+#
+
 import whois
 
 def check_domains(domains):
