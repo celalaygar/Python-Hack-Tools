@@ -1,3 +1,8 @@
+# install library
+#
+# pip install python-whois
+#
+
 import whois
 
 def get_domain_info(domain):
